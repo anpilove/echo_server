@@ -1,5 +1,6 @@
 import socket
 import logging
+import random
 
 
 def server(host='localhost', port=7669):
@@ -9,10 +10,20 @@ def server(host='localhost', port=7669):
         logging.info("Запуск сервера")
         print(">>> Запуск сервера")
         with socket.socket() as s:
+            while True:
+                try:
+                    s.bind((host, port))
+                    print(f"Подключение к порту {port}")
+                    logging.info("Начало прослушивания порта")
+                    print(">>> Начало прослушивания порта")
+                    break
+                except OSError:
+                    logging.info(f"Не получилось подключиться к порту {port}")
+                    print(f"Не получилось подключиться к порту {port}")
 
-            s.bind((host, port))
-            logging.info("Начало прослушивания порта")
-            print(">>> Начало прослушивания порта")
+                host = "localhost"
+                port = random.randint(1111,9999)
+
             while True:
                 s.listen(0)
                 logging.info("Подключение клиента")
