@@ -23,4 +23,6 @@ def user(host='localhost', port=7671):
 
 
 if __name__ == '__main__':
-    user()
+    host = input("Введите называние host: ")
+    port = input("Введите port: ")
+    user(host,port)
