@@ -1,7 +1,7 @@
 import socket
 
 
-def server(host='localhost', port=7671):
+def server(host='localhost', port=7670):
     try:
         print(">>> Запуск сервера")
         with socket.socket() as s:
